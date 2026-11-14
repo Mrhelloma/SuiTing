@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <!-- Legacy public audio-CDN URLs only. Metadata APIs remain HTTPS. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">qqmusic.qq.com</domain>
+        <domain includeSubdomains="true">aqqmusic.tc.qq.com</domain>
+        <domain includeSubdomains="true">music.126.net</domain>
+        <domain includeSubdomains="true">kuwo.cn</domain>
+    </domain-config>
+</network-security-config>
