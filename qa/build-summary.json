@@ -1,19 +1,20 @@
 {
-  "version": "0.1.10",
-  "versionCode": 11,
+  "version": "0.1.11",
+  "versionCode": 12,
   "checks": {
     "releaseBuild": "PASS",
+    "debugInstrumentationBuild": "PASS",
     "lint": "PASS",
     "signature": "PASS same certificate",
     "zipAlignment": "PASS",
     "javaRegressionTests": "59 passed",
-    "discoveryAndKeyboardUi": "PASS: repeated native-state show/hide, focus-only, landscape guard, playback update persistence, discover/catalog flows",
-    "androidKeyboard": "No new Android device run; native callback simulated in browser"
+    "nativeBackgroundPlayback": "NOT COMPLETED: software emulator did not finish booting; physical device required"
   },
   "changes": [
-    "Real Android IME insets drive keyboard-open UI state",
-    "Mini player and bottom navigation hidden while keyboard visible, restored according to page/player state",
-    "Initial page loads synchronize keyboard visibility"
+    "Keep media timeline and session during track URL resolution",
+    "Retain foreground media notification during resolving",
+    "Honor pause/resume while resolving",
+    "Add four-transition background notification instrumentation regression"
   ],
-  "historicalChecks": "0.1.9 live catalog/cache and existing layout logs are retained as history"
+  "historicalChecks": "Other QA logs are retained from earlier versions; see their version/date."
 }

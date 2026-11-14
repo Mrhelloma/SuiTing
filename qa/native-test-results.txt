@@ -1,4 +1,5 @@
-NOT COMPLETED
-The Android 11 software-only emulator did not finish booting during this validation attempt.
-No successful installation, actual audio playback, background playback, lock-screen or Bluetooth verification is claimed.
-The instrumentation source is included for execution on an Android device or a hardware-accelerated emulator.
+0.1.11: NOT COMPLETED
+Release/debug and instrumentation APKs compiled successfully.
+Software-only Android emulator did not complete boot during validation.
+Four-transition background/notification and system pause/resume regression added but not executed.
+No physical-device, lock-screen, Bluetooth, or vendor island validation is claimed.
