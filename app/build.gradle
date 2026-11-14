@@ -1,0 +1,36 @@
+plugins { id 'com.android.application' }
+def signingProps = new Properties()
+def signingFile = rootProject.file('signing/signing.properties')
+def hasPersonalSigning = signingFile.exists() && rootProject.file('signing/personal.jks').exists()
+if (hasPersonalSigning) signingFile.withInputStream { signingProps.load(it) }
+android {
+    namespace 'cn.musicsquare.app'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'cn.musicsquare.personal'
+        minSdk 26
+        targetSdk 35
+        versionCode 11
+        versionName '0.1.10'
+        testInstrumentationRunner 'cn.musicsquare.app.PlaybackSmokeInstrumentation'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    signingConfigs {
+        personal {
+            if (hasPersonalSigning) {
+            storeFile rootProject.file('signing/personal.jks')
+            storePassword signingProps['storePassword']
+            keyAlias signingProps['keyAlias']
+            keyPassword signingProps['keyPassword']
+            }
+        }
+    }
+    buildTypes { release { minifyEnabled false; if (hasPersonalSigning) signingConfig signingConfigs.personal } }
+}
+dependencies {
+    implementation 'androidx.media3:media3-exoplayer:1.6.1'
+    implementation 'androidx.media3:media3-session:1.6.1'
+    implementation 'androidx.webkit:webkit:1.12.1'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+}
