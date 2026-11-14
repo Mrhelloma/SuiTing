@@ -35,6 +35,7 @@ public class PlaybackService extends MediaSessionService {
     private int lyricSearchSerial=0;
     private boolean lyricOverride=false;
     private boolean resolving=false;
+    private boolean playWhenResolved=true,notificationHold=false;
     private PlaybackCache playbackCache;private boolean refreshedCachedUrl=false;
     public static volatile String snapshot="{}";
 
@@ -47,6 +48,16 @@ public class PlaybackService extends MediaSessionService {
         player.setHandleAudioBecomingNoisy(true);
         player.setWakeMode(C.WAKE_MODE_LOCAL);
         Player controls=new ForwardingPlayer(player) {
+            @Override public int getPlaybackState(){return resolving&&player.getMediaItemCount()>0?Player.STATE_BUFFERING:super.getPlaybackState();}
+            @Override public boolean getPlayWhenReady(){return resolving?playWhenResolved:super.getPlayWhenReady();}
+
+            @Override public void play(){
+                playWhenResolved=true;
+                if(resolving){publish();return;}
+                if(index>=0&&(!error.isEmpty()||player.getPlayerError()!=null))select(index);else player.play();
+            }
+            @Override public void pause(){playWhenResolved=false;player.pause();publish();}
+
             @Override public Player.Commands getAvailableCommands() {
                 return super.getAvailableCommands().buildUpon().add(Player.COMMAND_SEEK_TO_NEXT).add(Player.COMMAND_SEEK_TO_PREVIOUS).add(Player.COMMAND_SEEK_TO_NEXT_MEDIA_ITEM).add(Player.COMMAND_SEEK_TO_PREVIOUS_MEDIA_ITEM).build();
             }
@@ -71,10 +82,11 @@ public class PlaybackService extends MediaSessionService {
         player.addListener(new Player.Listener(){
             @Override public void onPlaybackStateChanged(int state) {if(state==Player.STATE_ENDED)next(1,true);publish();}
             @Override public void onIsPlayingChanged(boolean value){publish();}
+            @Override public void onPlayWhenReadyChanged(boolean value,int reason){if(!resolving)playWhenResolved=value;publish();}
             @Override public void onPlayerError(PlaybackException e){
                 if(current!=null&&current.optBoolean("audioFromCache",false)&&!refreshedCachedUrl){
-                    refreshedCachedUrl=true;final int ticket=generation;final JSONObject stale=current;final long position=player.getCurrentPosition();final boolean resume=player.getPlayWhenReady();resolving=true;publish();
-                    io.execute(()->{try{JSONObject fresh=playbackCache.resolve(stale,true);main.post(()->{if(ticket!=generation)return;try{current=fresh;candidateIndex=0;startAudio(fresh);player.seekTo(position);if(!resume)player.pause();}catch(Exception fail){resolving=false;error="重新获取音频失败，请重试";publish();}});}catch(Exception fail){main.post(()->{if(ticket==generation){resolving=false;error="链接已失效，重新获取失败，请重试或换源";publish();}});}});return;
+                    refreshedCachedUrl=true;final int ticket=generation;final JSONObject stale=current;final long position=player.getCurrentPosition();final boolean resume=player.getPlayWhenReady();playWhenResolved=resume;resolving=true;publish();
+                    io.execute(()->{try{JSONObject fresh=playbackCache.resolve(stale,true);main.post(()->{if(ticket!=generation)return;try{current=fresh;candidateIndex=0;startAudio(fresh);player.seekTo(position);}catch(Exception fail){resolving=false;error="重新获取音频失败，请重试";publish();}});}catch(Exception fail){main.post(()->{if(ticket==generation){resolving=false;error="链接已失效，重新获取失败，请重试或换源";publish();}});}});return;
                 }
                 JSONArray alternatives=current==null?null:current.optJSONArray("audioCandidates");
                 if(alternatives!=null&&candidateIndex+1<Math.min(alternatives.length(),4)){
@@ -93,8 +105,8 @@ public class PlaybackService extends MediaSessionService {
                 if(incoming.length()==0||incoming.length()>1000)throw new IllegalArgumentException();
                 queue=new JSONArray(incoming.toString()); select(c.optInt("index",0));break;
             case "toggle":
-                if(resolving)break;
-                if(player.isPlaying())player.pause();else if(player.getPlayerError()!=null&&index>=0)select(index);else if(current!=null)player.play();break;
+                if(resolving){playWhenResolved=!playWhenResolved;if(!playWhenResolved)player.pause();publish();break;}
+                if(player.isPlaying()){playWhenResolved=false;player.pause();}else if((player.getPlayerError()!=null||!error.isEmpty())&&index>=0)select(index);else if(current!=null){playWhenResolved=true;player.play();}break;
             case "next":next(1,false);break;
             case "prev":next(-1,false);break;
             case "seek":if(!resolving){long duration=player.getDuration(),position=Math.max(0,c.optLong("position"));if(duration>0)position=Math.min(position,Math.max(0,duration-100));player.seekTo(position);if(c.optBoolean("resume",false))player.play();}break;
@@ -114,9 +126,11 @@ public class PlaybackService extends MediaSessionService {
     }
     private void select(int n) {
         if(n<0||n>=queue.length())return;
-        int ticket=++generation; refreshedCachedUrl=false;index=n;current=queue.optJSONObject(n);error="";lyric="";resolving=true;candidateIndex=0;
+        int ticket=++generation; playWhenResolved=true;refreshedCachedUrl=false;index=n;current=queue.optJSONObject(n);error="";lyric="";resolving=true;candidateIndex=0;
         lyricKind="synced";lyricProvider="";lyricSearchStatus="idle";lyricSearchMessage="";lyricCandidates=new JSONArray();lyricOverride=false;lyricSearchSerial++;
-        player.stop();player.clearMediaItems();publish();
+        // Keep the current timeline/session while resolving the next URL. Clearing it
+        // makes Media3 cancel the media notification and drop foreground status.
+        player.stop();publish();
         final JSONObject track=current;
         io.execute(()->{
             try {
@@ -143,7 +157,7 @@ public class PlaybackService extends MediaSessionService {
         String cover=track.optString("cover");if(cover.startsWith("https://"))metadata.setArtworkUri(Uri.parse(cover));
         MediaItem item=new MediaItem.Builder().setMediaId(track.optString("uid")).setUri(url).setMediaMetadata(metadata.build()).build();
         player.setMediaSource(new DefaultMediaSourceFactory(data).createMediaSource(item));
-        error="";resolving=false;player.prepare();player.play();publish();
+        error="";resolving=false;player.setPlayWhenReady(playWhenResolved);player.prepare();publish();
     }
     private String playbackError(PlaybackException e){
         for(Throwable cause=e;cause!=null;cause=cause.getCause())if(cause instanceof HttpDataSource.InvalidResponseCodeException){int code=((HttpDataSource.InvalidResponseCodeException)cause).responseCode;return "音频服务器返回 HTTP "+code+"，链接可能已过期或受地区限制，请重试或换源";}
@@ -203,6 +217,8 @@ public class PlaybackService extends MediaSessionService {
     private void publish(){
         if(player==null)return;
         try {
+            boolean hold=resolving&&playWhenResolved&&player.getMediaItemCount()>0;
+            if(session!=null&&hold!=notificationHold){notificationHold=hold;onUpdateNotification(session,hold||player.getPlayWhenReady()&&(player.getPlaybackState()==Player.STATE_READY||player.getPlaybackState()==Player.STATE_BUFFERING));}
             MediaItem item=player.getCurrentMediaItem();
             if(current!=null&&!resolving&&item!=null&&item.mediaId.equals(current.optString("uid"))&&current.optString("source").equals("netease")&&PreviewPolicy.isShortPreview(current.optLong("durationMs",0),player.getDuration())){
                 if(!current.optBoolean("trialDetectedByDuration",false))playbackCache.markPreview(current);
@@ -213,12 +229,20 @@ public class PlaybackService extends MediaSessionService {
                     io.execute(()->{
                         try{
                             JSONObject full=new NeteaseResolver().resolveAfterPreview(target);playbackCache.put(full);
-                            main.post(()->{if(ticket!=generation)return;try{long position=player.getCurrentPosition();boolean playing=player.getPlayWhenReady();current=full;candidateIndex=0;startAudio(full);player.seekTo(position);if(!playing)player.pause();}catch(Exception e){error="完整音频切换失败，请重试或换源";resolving=false;publish();}});
+                            main.post(()->{if(ticket!=generation)return;try{long position=player.getCurrentPosition();boolean playing=player.getPlayWhenReady();playWhenResolved=playing;current=full;candidateIndex=0;startAudio(full);player.seekTo(position);if(!playing)player.pause();}catch(Exception e){error="完整音频切换失败，请重试或换源";resolving=false;publish();}});
                         }catch(Exception ignored){}
                     });
                 }
             }
-            snapshot=new JSONObject().put("track",current==null?JSONObject.NULL:current).put("queue",queue).put("index",index).put("playing",player.isPlaying()).put("position",Math.max(0,player.getCurrentPosition())).put("duration",Math.max(0,player.getDuration())).put("loading",resolving||player.getPlaybackState()==Player.STATE_BUFFERING).put("error",error).put("mode",mode).put("lyric",lyric).put("lyricKind",lyricKind).put("lyricProvider",lyricProvider).put("lyricSearchStatus",lyricSearchStatus).put("lyricSearchMessage",lyricSearchMessage).put("lyricSearchSerial",lyricSearchSerial).put("lyricCandidates",lyricCandidateSummaries()).toString();}catch(Exception ignored){}
+            snapshot=new JSONObject().put("track",current==null?JSONObject.NULL:current).put("queue",queue).put("index",index).put("playing",player.isPlaying()).put("foreground",isPlaybackOngoing()).put("position",Math.max(0,player.getCurrentPosition())).put("duration",Math.max(0,player.getDuration())).put("loading",resolving||player.getPlaybackState()==Player.STATE_BUFFERING).put("error",error).put("mode",mode).put("lyric",lyric).put("lyricKind",lyricKind).put("lyricProvider",lyricProvider).put("lyricSearchStatus",lyricSearchStatus).put("lyricSearchMessage",lyricSearchMessage).put("lyricSearchSerial",lyricSearchSerial).put("lyricCandidates",lyricCandidateSummaries()).toString();}catch(Exception ignored){}
+    }
+    @Override public void onUpdateNotification(MediaSession mediaSession,boolean startInForegroundRequired){
+        boolean hold=resolving&&playWhenResolved&&player!=null&&player.getMediaItemCount()>0;
+        super.onUpdateNotification(mediaSession,startInForegroundRequired||hold);
+    }
+    @Override public void onTaskRemoved(android.content.Intent rootIntent){
+        if(resolving&&playWhenResolved&&player!=null&&player.getMediaItemCount()>0)return;
+        super.onTaskRemoved(rootIntent);
     }
     @Override public MediaSession onGetSession(MediaSession.ControllerInfo controller){return session;}
     @Override public void onDestroy(){generation++;main.removeCallbacksAndMessages(null);io.shutdownNow();if(session!=null){session.release();session=null;}if(player!=null){player.release();player=null;}snapshot="{}";super.onDestroy();}
