@@ -1,0 +1,11 @@
+package cn.musicsquare.app;
+import org.json.*;import org.junit.Test;import static org.junit.Assert.*;
+public class CatalogApiTest{
+ @Test public void normalizesEntityAndPreservesStableId()throws Exception{JSONObject a=CatalogApi.entity(new JSONObject().put("id",3684).put("name","林俊杰").put("picUrl","http://p1.music.126.net/a.jpg").put("musicSize",50),"artist");assertEquals("3684",a.getString("id"));assertEquals("artist",a.getString("kind"));assertTrue(a.getString("cover").startsWith("https://"));}
+ @Test public void playlistTracksBecomePlayableLibraryRecords()throws Exception{JSONArray songs=new JSONArray().put(new JSONObject().put("id",123).put("name","歌").put("dt",200000).put("ar",new JSONArray().put(new JSONObject().put("name","歌手"))));JSONObject r=CatalogApi.detail(new JSONObject(),songs,45,20);assertTrue(r.getBoolean("hasMore"));assertEquals(21,r.getInt("offset"));assertEquals("netease-123",r.getJSONArray("tracks").getJSONObject(0).getString("uid"));}
+ @Test public void distinguishesCatalogErrorFromEmpty()throws Exception{JSONObject p=new JSONObject().put("operation","search").put("kind","artist").put("keyword","unique-test-error");try{new CatalogApi(u->"{\"code\":460}").request(p);fail();}catch(java.io.IOException e){assertTrue(e.getMessage().contains("460"));}p.put("keyword","unique-test-empty");assertEquals(0,new CatalogApi(u->"{\"code\":200,\"result\":{\"artists\":[],\"artistCount\":0}}").request(p).getJSONArray("items").length());}
+ @Test public void rejectsInvalidIdsBeforeNetwork()throws Exception{try{new CatalogApi(u->{throw new AssertionError();}).request(new JSONObject().put("operation","playlist").put("id","1&x=2"));fail();}catch(java.io.IOException expected){}}
+ @Test public void rejectsWrongDetailId()throws Exception{try{new CatalogApi(u->"{\"code\":200,\"artist\":{\"id\":1,\"name\":\"错歌手\"},\"hotSongs\":[]}").request(new JSONObject().put("operation","artist").put("id","999999"));fail();}catch(java.io.IOException expected){}}
+ @Test public void duplicateMetadataKeysUseLastValue()throws Exception{JSONObject r=CatalogApi.parseObject("{\"artist\":{\"id\":3684,\"followed\":false,\"followed\":true},\"songs\":[{\"id\":1}]}");assertTrue(r.getJSONObject("artist").getBoolean("followed"));}
+ @Test public void sliceAllowsEndOfList()throws Exception{assertEquals(0,CatalogApi.slice(new JSONArray(),20,20).length());}
+}
