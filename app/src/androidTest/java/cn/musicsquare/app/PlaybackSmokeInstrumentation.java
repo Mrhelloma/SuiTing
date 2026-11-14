@@ -51,9 +51,33 @@ public class PlaybackSmokeInstrumentation extends Instrumentation {
         runOnMainSync(()->controller.seekTo(29900));waitFor(()->state().optLong("position")<2500&&state().optInt("index")==0&&state().optBoolean("playing"),"single repeat");
         command(new JSONObject().put("action","mode").put("value","list"));
         runOnMainSync(()->controller.seekTo(29900));waitFor(()->state().optInt("index")==1&&state().optBoolean("playing"),"queue auto advance");
-        result.putString("stream","PASS: real local playback, progress, background service, MediaSession next/previous/pause/seek/resume, single repeat, automatic queue advance.\n");
+        waitFor(()->mediaNotification()!=null&&state().optBoolean("foreground"),"media notification and foreground service");
+        Object sessionToken=mediaNotification().getNotification().extras.getParcelable(Notification.EXTRA_MEDIA_SESSION);
+        for(int cycle=0;cycle<4;cycle++){
+            final int expected=(state().optInt("index")+1)%2;
+            runOnMainSync(()->controller.seekTo(29900));
+            long deadline=System.currentTimeMillis()+18000;
+            boolean advanced=false;
+            while(System.currentTimeMillis()<deadline){
+                android.service.notification.StatusBarNotification notification=mediaNotification();
+                check(notification!=null,"media notification disappeared during background transition "+cycle);
+                check(sessionToken.equals(notification.getNotification().extras.getParcelable(Notification.EXTRA_MEDIA_SESSION)),"media session changed during transition");
+                JSONObject snap=state();
+                if(snap.optInt("index")==expected&&snap.optBoolean("playing")&&snap.optLong("position")>300&&snap.optBoolean("foreground")){advanced=true;break;}
+                Thread.sleep(25);
+            }
+            check(advanced,"automatic background transition did not complete: "+cycle);
+            runOnMainSync(()->controller.pause());waitFor(()->!state().optBoolean("playing"),"notification/session pause after auto transition");
+            runOnMainSync(()->controller.play());waitFor(()->state().optBoolean("playing"),"notification/session resume after auto transition");
+        }
+        result.putString("stream","PASS: real local playback, progress, background service, MediaSession controls, single repeat, queue auto advance; four consecutive background auto transitions retained media notification and session token, foreground status and controls.\n");
         cleanup();finish(Activity.RESULT_OK,result);
     }catch(Throwable e){result.putString("stream","FAIL: "+e+"\n");cleanup();finish(Activity.RESULT_CANCELED,result);}}
+    private android.service.notification.StatusBarNotification mediaNotification(){
+        NotificationManager manager=getTargetContext().getSystemService(NotificationManager.class);
+        for(android.service.notification.StatusBarNotification n:manager.getActiveNotifications())if(n.getNotification().extras.containsKey(Notification.EXTRA_MEDIA_SESSION))return n;
+        return null;
+    }
     private void cleanup(){if(controller!=null)runOnMainSync(()->{controller.stop();controller.release();});if(audio!=null)getTargetContext().getContentResolver().delete(audio,null,null);if(activity!=null)runOnMainSync(()->activity.finish());}
     private byte[] wave()throws Exception{int rate=8000,n=rate*30;ByteArrayOutputStream bytes=new ByteArrayOutputStream();DataOutputStream out=new DataOutputStream(bytes);out.writeBytes("RIFF");le(out,36+n*2,4);out.writeBytes("WAVEfmt ");le(out,16,4);le(out,1,2);le(out,1,2);le(out,rate,4);le(out,rate*2,4);le(out,2,2);le(out,16,2);out.writeBytes("data");le(out,n*2,4);for(int i=0;i<n;i++)le(out,(int)(Math.sin(i*2*Math.PI*220/rate)*600),2);return bytes.toByteArray();}
     private void le(DataOutputStream out,int value,int count)throws Exception{for(int i=0;i<count;i++)out.writeByte(value>>(8*i));}
