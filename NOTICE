@@ -1,0 +1,14 @@
+MusicSquare Personal (随听) Android adaptation, 2026.
+Based in part on CharlesPikachu/musicsquare by Zhenchao Jin and contributors.
+Upstream: https://github.com/CharlesPikachu/musicsquare
+Upstream license: Apache License 2.0.
+Modifications: new mobile HTML/CSS/JS UI; Android Java host; Media3 service;
+native network adapters; local library persistence and JSON transfer; testing.
+
+AndroidX Media3 1.6.1 and AndroidX WebKit 1.12.1: Apache License 2.0.
+Gradle Wrapper: Gradle project, Apache License 2.0.
+Guava and other transitive dependencies retain their respective upstream notices.
+No upstream music service credentials or audio recordings are bundled.
+
+Lyrics lookup uses NetEase public metadata/lyric endpoints and the LRCLIB API (https://lrclib.net/docs).
+No downloaded song lyrics are bundled in this source package or APK.
