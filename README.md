@@ -72,9 +72,9 @@
 当前交付版本：
 
 - [Android 安装包：SuiTing-0.1.10.apk](../../releases/tag/v0.1.10)
-- [完整工程：SuiTing-Android-Source.zip](../../releases/tag/v0.1.10)
+- [完整工程：SuiTing-GitHub-Source.zip](../../releases/tag/v0.1.10)
 
-安装包与不含私钥的源码归档计划随 v0.1.10 Release 一起提供。
+安装包与不含私钥的源码归档随 v0.1.10 Release 一起提供。
 
 在 Android 8.0 及以上设备上打开 APK 安装。系统提示时，为用于打开 APK 的浏览器或文件管理器允许安装该来源的应用。建议保持系统 Android WebView 为较新版本。
 
@@ -156,7 +156,7 @@
 | AndroidX Media3 | 1.6.1 |
 | AndroidX WebKit | 1.12.1 |
 
-解压源码，使用 Android Studio 打开 `music-square-android` 目录，设置 Gradle JDK 为 17，并安装对应 Android SDK。首次同步需要能够访问构建依赖仓库。`local.properties` 为本机配置文件，由 Android Studio 创建，不应提交到公开仓库。
+解压源码，使用 Android Studio 打开仓库根目录，设置 Gradle JDK 为 17，并安装对应 Android SDK。首次同步需要能够访问构建依赖仓库。`local.properties` 为本机配置文件，由 Android Studio 创建，不应提交到公开仓库。
 
 仓库不包含应用私钥和签名密码。未配置签名时，`assembleRelease` 生成未签名 APK；如需可直接安装的开发包，可运行 `assembleDebug`。如需签名 Release，请自行准备 `signing/personal.jks` 和 `signing/signing.properties`，属性包括 `storePassword`、`keyPassword` 和 `keyAlias`，可参考 `signing.example.properties`。自己的签名无法覆盖其他签名安装的版本。
 
