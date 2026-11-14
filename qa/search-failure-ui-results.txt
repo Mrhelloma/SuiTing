@@ -1,0 +1,1 @@
+PASS: provider error is persistent and distinct from a genuine empty search; retry recovers to valid results; no stale failure remains after success; no JS errors. Browser native bridge mocked.

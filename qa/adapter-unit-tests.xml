@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.musicsquare.app.MusicApiTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-14T15:36:29.160Z" hostname="0f234ad4fe31" time="0.012">
+  <properties/>
+  <testcase name="shortPreviewDetectionDoesNotMislabelShortSongs" classname="cn.musicsquare.app.MusicApiTest" time="0.0"/>
+  <testcase name="unavailablePlatformPlaybackIsReportedHonestly" classname="cn.musicsquare.app.MusicApiTest" time="0.0"/>
+  <testcase name="httpAllowlistCannotBeSpoofed" classname="cn.musicsquare.app.MusicApiTest" time="0.001"/>
+  <testcase name="missingAndJsonNullUrlsDoNotMaskWorkingAlternatives" classname="cn.musicsquare.app.MusicApiTest" time="0.0"/>
+  <testcase name="neteaseCloudAndLegacySchemasAreBothSupported" classname="cn.musicsquare.app.MusicApiTest" time="0.001"/>
+  <testcase name="fallbackCandidatesExcludeAccompanimentAndDuplicates" classname="cn.musicsquare.app.MusicApiTest" time="0.001"/>
+  <testcase name="neteaseSearchKeepsFullSongDuration" classname="cn.musicsquare.app.MusicApiTest" time="0.0"/>
+  <testcase name="trialPlaybackIsMarked" classname="cn.musicsquare.app.MusicApiTest" time="0.001"/>
+  <testcase name="wrongSongCannotReplaceSelectedTrack" classname="cn.musicsquare.app.MusicApiTest" time="0.0"/>
+  <testcase name="qqHttpCdnLinkIsRetained" classname="cn.musicsquare.app.MusicApiTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

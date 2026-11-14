@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.musicsquare.app.QQSearchTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-14T15:36:29.463Z" hostname="0f234ad4fe31" time="0.068">
+  <properties/>
+  <testcase name="positivePrimaryAvoidsExtraRequests" classname="cn.musicsquare.app.QQSearchTest" time="0.001"/>
+  <testcase name="malformedRowsAreNotSilentlyCalledEmpty" classname="cn.musicsquare.app.QQSearchTest" time="0.0"/>
+  <testcase name="shortPrimaryListCanBeToppedUpWithoutDuplicateSongs" classname="cn.musicsquare.app.QQSearchTest" time="0.005"/>
+  <testcase name="officialCatalogPaginatesUpToForty" classname="cn.musicsquare.app.QQSearchTest" time="0.008"/>
+  <testcase name="genuineEmptyAndJsonpAreHandled" classname="cn.musicsquare.app.QQSearchTest" time="0.017"/>
+  <testcase name="catalogFirstPageDuplicatesStillAllowSecondPageTopUp" classname="cn.musicsquare.app.QQSearchTest" time="0.01"/>
+  <testcase name="secondPageFailureKeepsValidFirstPage" classname="cn.musicsquare.app.QQSearchTest" time="0.003"/>
+  <testcase name="bothFailuresDoNotPretendThereAreNoSongs" classname="cn.musicsquare.app.QQSearchTest" time="0.012"/>
+  <testcase name="emptyPrimaryFallsBackToPublicCatalog" classname="cn.musicsquare.app.QQSearchTest" time="0.004"/>
+  <testcase name="transientPrimaryCanRecoverOnBoundedRetry" classname="cn.musicsquare.app.QQSearchTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

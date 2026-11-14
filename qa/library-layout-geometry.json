@@ -1,0 +1,146 @@
+[
+  {
+    "viewport": [
+      393,
+      780
+    ],
+    "tab": "favorites",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 454
+  },
+  {
+    "viewport": [
+      393,
+      780
+    ],
+    "tab": "local",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 454
+  },
+  {
+    "viewport": [
+      393,
+      780
+    ],
+    "tab": "playlists",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 454
+  },
+  {
+    "viewport": [
+      360,
+      640
+    ],
+    "tab": "favorites",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 314
+  },
+  {
+    "viewport": [
+      360,
+      640
+    ],
+    "tab": "local",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 314
+  },
+  {
+    "viewport": [
+      360,
+      640
+    ],
+    "tab": "playlists",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 314
+  },
+  {
+    "viewport": [
+      360,
+      568
+    ],
+    "tab": "favorites",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 268
+  },
+  {
+    "viewport": [
+      360,
+      568
+    ],
+    "tab": "local",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 268
+  },
+  {
+    "viewport": [
+      360,
+      568
+    ],
+    "tab": "playlists",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 268
+  },
+  {
+    "viewport": [
+      320,
+      480
+    ],
+    "tab": "favorites",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 180
+  },
+  {
+    "viewport": [
+      320,
+      480
+    ],
+    "tab": "local",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 180
+  },
+  {
+    "viewport": [
+      320,
+      480
+    ],
+    "tab": "playlists",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "mainTop": 0,
+    "contentHeight": 180
+  }
+]

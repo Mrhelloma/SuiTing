@@ -1,0 +1,7 @@
+PASS artist search: 林俊杰 id=3684
+PASS artist hot tracks: 20
+PASS playlist search: 20
+PASS playlist detail and ID-based second-page hydration: 20 + 20
+PASS recommended playlists: 8
+PASS live URL cache: first resolve=11200ms; cached resolve=0ms; provider=wzapi; no audio URL logged
+Scope: production Java catalog and cached resolver in server network. Not Android device timings or full end-to-end playback.

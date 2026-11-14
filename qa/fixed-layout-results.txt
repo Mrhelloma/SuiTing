@@ -1,0 +1,2 @@
+PASS: compact header; single/song/playlist selector; fixed player in five viewport sizes; all controls visible; only lyrics scroll; preview/error controls visible; header returns outside player.
+Scope: browser layout/interaction validation with mocked native bridge.

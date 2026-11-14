@@ -1,0 +1,4 @@
+PASS NetEase public search: 5 songs; first id=108485
+PASS QQ resolve and ranged audio read: scheme=http, host=isure6.stream.qqmusic.qq.com, HTTP 206, bytes=65536
+Scope: server-side adapter/resource validation only, not Android-device playback.
+PASS desktop audio decoder: first second of the 64KiB QQ sample decoded with ffmpeg.

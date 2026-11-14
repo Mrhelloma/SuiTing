@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.musicsquare.app.NeteaseResolverTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-11-14T15:36:29.180Z" hostname="0f234ad4fe31" time="0.03">
+  <properties/>
+  <testcase name="keepsHonestPreviewWhenThirdPartyFails" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.005"/>
+  <testcase name="rejectsEitherMismatchedId" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="officialPreviewUsesThirdParty" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.004"/>
+  <testcase name="rejectsNonCdnAndEmptyUrls" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="fillsMissingDurationWithoutOverwritingSearchDuration" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.002"/>
+  <testcase name="officialFullSkipsThirdParty" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="genuineShortSongDoesNotTriggerThirdParty" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="rejectsWrongDuration" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="bothFailuresAndBadIdsFailClearly" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="rejectsExplicitPreview" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.003"/>
+  <testcase name="originalErrorOrEmptyUsesThirdParty" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.003"/>
+  <testcase name="rejectsFailedResponseAndDeduplicates" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="officialFallbackClearsStaleCandidatesAndPreviewDetection" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.001"/>
+  <testcase name="retainsIdentityAndPrefersStandard" classname="cn.musicsquare.app.NeteaseResolverTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

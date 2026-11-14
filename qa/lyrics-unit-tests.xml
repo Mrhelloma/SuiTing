@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.musicsquare.app.LyricsSearchTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-14T15:36:29.115Z" hostname="0f234ad4fe31" time="0.042">
+  <properties/>
+  <testcase name="lrcNormalizationKeepsARealTimeAxis" classname="cn.musicsquare.app.LyricsSearchTest" time="0.001"/>
+  <testcase name="mismatchedRecordingDurationIsNotAutoApplied" classname="cn.musicsquare.app.LyricsSearchTest" time="0.025"/>
+  <testcase name="noResultsAreReportedWithoutAnIncorrectMatch" classname="cn.musicsquare.app.LyricsSearchTest" time="0.001"/>
+  <testcase name="plainLyricsAreNotGivenFakeTimestamps" classname="cn.musicsquare.app.LyricsSearchTest" time="0.002"/>
+  <testcase name="exactTitleArtistDurationAutoMatchesSyncedLyrics" classname="cn.musicsquare.app.LyricsSearchTest" time="0.002"/>
+  <testcase name="unknownDurationOrArtistRequiresConfirmation" classname="cn.musicsquare.app.LyricsSearchTest" time="0.001"/>
+  <testcase name="collaborationNamesAndEnglishAliasesMatch" classname="cn.musicsquare.app.LyricsSearchTest" time="0.002"/>
+  <testcase name="sameTitleDifferentSingerRequiresConfirmation" classname="cn.musicsquare.app.LyricsSearchTest" time="0.003"/>
+  <testcase name="independentLyricsProviderIsUsedAsFallback" classname="cn.musicsquare.app.LyricsSearchTest" time="0.003"/>
+  <testcase name="liveVersionIsNotTreatedAsStudioVersion" classname="cn.musicsquare.app.LyricsSearchTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

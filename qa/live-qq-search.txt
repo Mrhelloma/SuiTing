@@ -1,0 +1,3 @@
+PASS normal QQ search 周杰伦: 40 songs
+PASS forced-empty primary -> QQ public catalog: 40 songs, pagination and stable mids verified
+Scope: production Java search adapter only; not an Android-device network guarantee.

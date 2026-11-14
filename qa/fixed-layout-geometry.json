@@ -1,0 +1,574 @@
+[
+  {
+    "viewport": [
+      393,
+      780
+    ],
+    "mode": "cover",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 702,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 625,
+        "bottom": 687,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 414,
+    "lyricsHeight": 355,
+    "font": 14,
+    "line": 34
+  },
+  {
+    "viewport": [
+      393,
+      780
+    ],
+    "mode": "lyrics",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 702,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 625,
+        "bottom": 687,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 635,
+        "bottom": 677,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 441,
+    "lyricsHeight": 382,
+    "font": 14,
+    "line": 34
+  },
+  {
+    "viewport": [
+      360,
+      640
+    ],
+    "mode": "cover",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 562,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 499.5,
+        "bottom": 553.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 325,
+    "lyricsHeight": 291,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      360,
+      640
+    ],
+    "mode": "lyrics",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 562,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 499.5,
+        "bottom": 553.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 505.5,
+        "bottom": 547.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 346,
+    "lyricsHeight": 292,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      360,
+      568
+    ],
+    "mode": "cover",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 490,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 427.5,
+        "bottom": 481.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 253,
+    "lyricsHeight": 211,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      360,
+      568
+    ],
+    "mode": "lyrics",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 490,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 427.5,
+        "bottom": 481.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 274,
+    "lyricsHeight": 220,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      320,
+      480
+    ],
+    "mode": "cover",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 431,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 381.5,
+        "bottom": 425.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 271,
+    "lyricsHeight": 224,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      320,
+      480
+    ],
+    "mode": "lyrics",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 431,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 381.5,
+        "bottom": 425.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 382.5,
+        "bottom": 424.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 271,
+    "lyricsHeight": 224,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      640,
+      360
+    ],
+    "mode": "cover",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 311,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 261.5,
+        "bottom": 305.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 151,
+    "lyricsHeight": 164,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      640,
+      360
+    ],
+    "mode": "lyrics",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 311,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 261.5,
+        "bottom": 305.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 262.5,
+        "bottom": 304.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 151,
+    "lyricsHeight": 134,
+    "font": 13,
+    "line": 30
+  },
+  {
+    "viewport": [
+      360,
+      568
+    ],
+    "mode": "notices",
+    "mainOverflow": 0,
+    "pageOverflow": 0,
+    "docOverflow": 0,
+    "navTop": 490,
+    "controls": [
+      {
+        "id": "mode-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "prev-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "play-button",
+        "top": 427.5,
+        "bottom": 481.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "next-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      },
+      {
+        "id": "queue-button",
+        "top": 433.5,
+        "bottom": 475.5,
+        "inside": true,
+        "unobstructed": true
+      }
+    ],
+    "cardHeight": 128,
+    "lyricsHeight": 288,
+    "font": 13,
+    "line": 30
+  }
+]

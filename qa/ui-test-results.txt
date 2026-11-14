@@ -1,0 +1,2 @@
+PASS: mobile 393×852 / 360×640; search request race; favorite add/remove; playlist creation/addition; native queue/toggle commands; LRC multi timestamps; import merge; unsafe text escaping; navigation/back; zero JS runtime errors.
+Native bridge is mocked in these UI tests; this does not verify Android playback or live music availability.

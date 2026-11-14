@@ -1,0 +1,2 @@
+PASS: first and later active lyrics are centered; empty/plain text remains top-aligned; empty state has network search/edit buttons; search command/loading state; matched lyrics highlight at existing playback position; click to seek/resume; ambiguous version confirmation; no-result feedback; editable metadata; plaintext is never given fake timestamps; controls remain visible.
+Scope: browser interaction validation with mocked Android service snapshots.

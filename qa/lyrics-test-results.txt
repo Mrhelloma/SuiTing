@@ -1,0 +1,2 @@
+PASS: default cover, 3D cover/lyrics flip, return cover, lyric line seek, 1.5s idle follow, finger hold suppression, inertia extends idle, no seek on drag, automatic scroll does not rearm browse, metadata keeps selected face, next song resets cover, preview duration detection, same-song alternate-source search, short-song false-positive guard, narrow mobile layout, back navigation.
+Scope: browser UI test with mocked native bridge; not an Android device playback test.

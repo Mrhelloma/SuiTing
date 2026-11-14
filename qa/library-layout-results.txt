@@ -1,0 +1,2 @@
+PASS: top player add-to-playlist and bottom queue buttons swapped with correct actions; library hero/footer notes removed; backup instructions in Usage; About bottom-right import/export actions; larger bold tabs; fixed toolbar/tabs across favorites/local/playlists in four portrait viewports; only list scrolls; fixed nested playlist back/header; list position retained on removal; export/import still dispatch native actions; zero JS errors.
+Scope: browser layout and interaction validation with mocked native bridge.

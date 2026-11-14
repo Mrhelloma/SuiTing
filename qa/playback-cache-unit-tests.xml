@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cn.musicsquare.app.PlaybackCacheTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-14T15:36:29.220Z" hostname="0f234ad4fe31" time="0.24">
+  <properties/>
+  <testcase name="thirtyMinutePreviewMemoryPersistsAndExpires" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.007"/>
+  <testcase name="cacheBoundedAcrossManyTracks" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.192"/>
+  <testcase name="hitsPersistedCacheWithoutResolver" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.005"/>
+  <testcase name="forceRefreshInvokesSourceOnce" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.001"/>
+  <testcase name="recentPreviewSkipsOfficialButNetworkErrorDoesNotCreateMemory" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.001"/>
+  <testcase name="signedNeteaseUrlExpiresBeforeDefaultTtl" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.026"/>
+  <testcase name="ignoresTrialAndLocalTracks" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.001"/>
+  <testcase name="expiresAndDoesNotReuseInvalidatedLink" classname="cn.musicsquare.app.PlaybackCacheTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

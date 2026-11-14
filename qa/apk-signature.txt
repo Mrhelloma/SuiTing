@@ -1,0 +1,4 @@
+Signer #1 certificate DN: CN=MusicSquare Personal, O=Personal Use
+Signer #1 certificate SHA-256 digest: 16cc3ba3306da2c097e8eb7e59828ced7fd1aa48b06e3bb637f3dafc2d66b824
+Signer #1 certificate SHA-1 digest: a78ea039456419846c33ec866e7b6a169981e41c
+Signer #1 certificate MD5 digest: 9e1a33ac7fa4c79b6c072662bacbfadc
