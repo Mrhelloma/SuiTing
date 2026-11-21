@@ -118,6 +118,19 @@ public final class MusicApi {
             return parseQQDetails(t,new JSONObject(get("https://tang.api.s01s.cn/music_open_api.php?msg="+enc(keyword)+"&type=json&mid="+enc(id))));
         }
         if(source.equals("kuwo")){
+            if (t.optBoolean("kuwoImported") || "true".equals(t.optString("kuwoImported"))) {
+                JSONArray matches = search("kuwo", text(t,"keyword"), 20);
+                int index = -1;
+                for (int i = 0; i < matches.length(); i++) {
+                    JSONObject match = matches.getJSONObject(i);
+                    if (id.equals(text(match,"songid"))) {
+                        index = match.optInt("displayIndex", 1);
+                        break;
+                    }
+                }
+                if (index < 0) throw new IOException("酷我暂未找到该歌单曲目的可播放资源");
+                t.put("displayIndex", index);
+            }
             JSONObject raw=new JSONObject(get("https://oiapi.net/api/Kuwo?msg="+enc(text(t,"keyword"))+"&n="+t.optInt("displayIndex",1)+"&br=1"));
             JSONObject d=raw.optJSONObject("data");if(d==null)d=raw;
             String actual=text(d,"rid");if(!actual.isEmpty()&&!actual.equals(id))throw new IOException("酷我搜索排序已变化，请重新搜索后播放");
